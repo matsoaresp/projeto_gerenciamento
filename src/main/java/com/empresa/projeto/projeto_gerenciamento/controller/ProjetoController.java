@@ -10,28 +10,29 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/projeto")
+@RequestMapping(value= "/projeto")
 public class ProjetoController {
 
     @Autowired
     private ProjetoService service;
 
     @PostMapping(value = "/save")
-    public ResponseEntity<Projeto> saveproduct(@RequestBody Projeto projeto) {
+    public ResponseEntity<Projeto> create(@RequestBody Projeto projeto){
         projeto = service.save(projeto);
-        return ResponseEntity.ok().body(projeto);
+        return ResponseEntity.ok(service.save(projeto));
     }
 
-    @GetMapping(value ="/{id}" )
-    public ResponseEntity<Projeto> findById(@PathVariable Long id) {
-        Projeto projeto = service.findbyId(id);
-        return ResponseEntity.ok().body(projeto);
-    }
-
-    @GetMapping(value = "/search")
-    public ResponseEntity<List<Projeto>> findAll() {
+    @GetMapping(value = "search")
+    public ResponseEntity<List<Projeto>> findAll(){
         List<Projeto> projetos = service.findAll();
         return ResponseEntity.ok().body(projetos);
     }
+
+    @GetMapping(value="{id}")
+    public ResponseEntity<Projeto> findById(@PathVariable Long id){
+        Projeto projeto = service.findById(id);
+        return ResponseEntity.ok().body(projeto);
     }
 
+
+}

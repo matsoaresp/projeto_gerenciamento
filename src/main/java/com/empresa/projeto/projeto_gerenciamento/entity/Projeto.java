@@ -9,21 +9,13 @@ import jakarta.persistence.Id;
 public class Projeto {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String nome;
-    private Double preco;
     private String descricao;
 
-    public Projeto() {}
+    public Projeto() {
 
-    public Double getPreco() {
-        return preco;
-    }
-
-    public void setPreco(Double preco) {
-        this.preco = preco;
     }
 
     public Long getId() {
@@ -34,6 +26,14 @@ public class Projeto {
         this.id = id;
     }
 
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
     public String getNome() {
         return nome;
     }
@@ -42,12 +42,7 @@ public class Projeto {
         this.nome = nome;
     }
 
-    public String getDescricao() {
-        return descricao;
-    }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
+
+
 }
-
