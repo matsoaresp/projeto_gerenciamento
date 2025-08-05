@@ -1,1 +1,6 @@
 .vscode/
+git commit -m "Resolve conflito de merge no .gitignore"
+.gradle/
+.idea/
+HELP.md
+build/

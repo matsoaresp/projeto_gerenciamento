@@ -16,13 +16,10 @@ public class ProjetoService {
     public Projeto save(Projeto projeto) {
         return repository.save(projeto);
     }
-
-    public Projeto findbyId(Long id) {
-        return repository.findById(id).orElse(null);
-    }
-
     public List<Projeto> findAll() {
         return repository.findAll();
     }
+    public Projeto findById(Long id) {
+        return repository.findById(id).orElse(null);
+    }
 }
-
