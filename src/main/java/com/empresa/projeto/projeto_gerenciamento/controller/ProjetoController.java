@@ -1,14 +1,13 @@
 package com.empresa.projeto.projeto_gerenciamento.controller;
 
 import com.empresa.projeto.projeto_gerenciamento.entity.Projeto;
+import com.empresa.projeto.projeto_gerenciamento.exception.ProductNullException;
 import com.empresa.projeto.projeto_gerenciamento.service.ProjetoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
-import org.springframework.web.bind.annotation.RestController;
+import java.util.List;
 
 @RestController
 @RequestMapping(value = "/projeto")
@@ -22,4 +21,17 @@ public class ProjetoController {
         projeto = service.save(projeto);
         return ResponseEntity.ok().body(projeto);
     }
-}
+
+    @GetMapping(value ="/{id}" )
+    public ResponseEntity<Projeto> findById(@PathVariable Long id) {
+        Projeto projeto = service.findbyId(id);
+        return ResponseEntity.ok().body(projeto);
+    }
+
+    @GetMapping(value = "/search")
+    public ResponseEntity<List<Projeto>> findAll() {
+        List<Projeto> projetos = service.findAll();
+        return ResponseEntity.ok().body(projetos);
+    }
+    }
+
