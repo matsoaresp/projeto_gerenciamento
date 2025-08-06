@@ -11,11 +11,19 @@ public class Projeto {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;
+    private int preco;
     private String nome;
     private String descricao;
 
     public Projeto() {
 
+    }
+    public int getPreco() {
+        return preco;
+    }
+
+    public void setPreco(int preco) {
+        this.preco = preco;
     }
 
     public Long getId() {

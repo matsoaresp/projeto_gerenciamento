@@ -1,6 +1,8 @@
 package com.empresa.projeto.projeto_gerenciamento.service;
 
 import com.empresa.projeto.projeto_gerenciamento.entity.Projeto;
+import com.empresa.projeto.projeto_gerenciamento.exception.ProductNullException;
+import com.empresa.projeto.projeto_gerenciamento.exception.ProductPriceException;
 import com.empresa.projeto.projeto_gerenciamento.repository.ProjetoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,7 +15,11 @@ public class ProjetoService {
     @Autowired
     private ProjetoRepository repository;
 
-    public Projeto save(Projeto projeto) {
+    public Projeto save(Projeto projeto) throws ProductPriceException {
+        if (projeto.getNome() == null) {
+            throw new ProductNullException();
+        } if (projeto.getPreco() < 0)
+            throw new ProductPriceException();
         return repository.save(projeto);
     }
     public List<Projeto> findAll() {

@@ -2,6 +2,7 @@ package com.empresa.projeto.projeto_gerenciamento.controller;
 
 import com.empresa.projeto.projeto_gerenciamento.entity.Projeto;
 import com.empresa.projeto.projeto_gerenciamento.exception.ProductNullException;
+import com.empresa.projeto.projeto_gerenciamento.exception.ProductPriceException;
 import com.empresa.projeto.projeto_gerenciamento.service.ProjetoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +18,7 @@ public class ProjetoController {
     private ProjetoService service;
 
     @PostMapping(value = "/save")
-    public ResponseEntity<Projeto> create(@RequestBody Projeto projeto){
+    public ResponseEntity<Projeto> create(@RequestBody Projeto projeto) throws ProductPriceException {
         projeto = service.save(projeto);
         return ResponseEntity.ok(service.save(projeto));
     }
@@ -33,6 +34,7 @@ public class ProjetoController {
         Projeto projeto = service.findById(id);
         return ResponseEntity.ok().body(projeto);
     }
+
 
 
 }
