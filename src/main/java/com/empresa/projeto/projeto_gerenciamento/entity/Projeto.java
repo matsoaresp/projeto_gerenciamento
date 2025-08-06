@@ -11,12 +11,26 @@ public class Projeto {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;
+<<<<<<< Updated upstream
+=======
+    private double preco;
+>>>>>>> Stashed changes
     private String nome;
     private String descricao;
 
     public Projeto() {
 
     }
+<<<<<<< Updated upstream
+=======
+    public double getPreco() {
+        return preco;
+    }
+
+    public void setPreco(double preco) {
+        this.preco = preco;
+    }
+>>>>>>> Stashed changes
 
     public Long getId() {
         return id;
