@@ -13,7 +13,15 @@ public class ProjetoService {
     @Autowired
     private ProjetoRepository repository;
 
+<<<<<<< Updated upstream
     public Projeto save(Projeto projeto) {
+=======
+    public  Projeto save(Projeto projeto) throws ProductPriceException {
+        if (projeto.getNome() == null) {
+            throw new ProductNullException();
+        } if (projeto.getPreco() < 0)
+            throw new ProductPriceException();
+>>>>>>> Stashed changes
         return repository.save(projeto);
     }
     public List<Projeto> findAll() {
